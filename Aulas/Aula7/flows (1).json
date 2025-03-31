@@ -1,0 +1,127 @@
+[
+    {
+        "id": "eeed61a17a383099",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9aa5b504477a8918",
+        "type": "http in",
+        "z": "eeed61a17a383099",
+        "name": "",
+        "url": "/charactersPOST",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "ff14aaafdb190335"
+            ]
+        ]
+    },
+    {
+        "id": "5ebb3c4a68ec66df",
+        "type": "http response",
+        "z": "eeed61a17a383099",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 750,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "896b06f9d8e4c931",
+        "type": "http in",
+        "z": "eeed61a17a383099",
+        "name": "",
+        "url": "/characters",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "a15fc6c5e291fc5b"
+            ]
+        ]
+    },
+    {
+        "id": "23dac3ef979e86db",
+        "type": "http response",
+        "z": "eeed61a17a383099",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 670,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "a15fc6c5e291fc5b",
+        "type": "cloudantplus in",
+        "z": "eeed61a17a383099",
+        "name": "",
+        "cloudant": "fb08fe184b21f073",
+        "database": "suniverse8",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 430,
+        "y": 180,
+        "wires": [
+            [
+                "23dac3ef979e86db"
+            ]
+        ]
+    },
+    {
+        "id": "ff14aaafdb190335",
+        "type": "cloudantplus out",
+        "z": "eeed61a17a383099",
+        "name": "",
+        "cloudant": "fb08fe184b21f073",
+        "database": "suniverse8",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 590,
+        "y": 120,
+        "wires": [
+            [
+                "5ebb3c4a68ec66df",
+                "2e746d88e04687e9"
+            ]
+        ]
+    },
+    {
+        "id": "2e746d88e04687e9",
+        "type": "debug",
+        "z": "eeed61a17a383099",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "fb08fe184b21f073",
+        "type": "cloudantplus",
+        "host": "https://f1c0dcf9-5075-4061-a1f8-2f4ca596058a-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "PrimeiraCredencial",
+        "useapikey": true
+    }
+]
