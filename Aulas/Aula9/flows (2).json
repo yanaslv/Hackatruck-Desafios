@@ -1,0 +1,110 @@
+[
+    {
+        "id": "bb4a5a64618f4298",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1917f7bda9bfee4b",
+        "type": "http in",
+        "z": "bb4a5a64618f4298",
+        "name": "",
+        "url": "/sensorUmidadePOST",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 100,
+        "wires": [
+            [
+                "88b7267a85fb5757"
+            ]
+        ]
+    },
+    {
+        "id": "5a4ad7932d5884ce",
+        "type": "http response",
+        "z": "bb4a5a64618f4298",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 650,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "0931e670ec7517df",
+        "type": "http in",
+        "z": "bb4a5a64618f4298",
+        "name": "",
+        "url": "/sensorUmidade",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "db7d3ca941fdd1c5"
+            ]
+        ]
+    },
+    {
+        "id": "61a1c333c1dd07ed",
+        "type": "http response",
+        "z": "bb4a5a64618f4298",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 650,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "88b7267a85fb5757",
+        "type": "cloudantplus out",
+        "z": "bb4a5a64618f4298",
+        "name": "",
+        "cloudant": "fb08fe184b21f073",
+        "database": "sensor_umidade",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 440,
+        "y": 100,
+        "wires": [
+            [
+                "5a4ad7932d5884ce"
+            ]
+        ]
+    },
+    {
+        "id": "db7d3ca941fdd1c5",
+        "type": "cloudantplus in",
+        "z": "bb4a5a64618f4298",
+        "name": "",
+        "cloudant": "fb08fe184b21f073",
+        "database": "sensor_umidade",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 400,
+        "y": 160,
+        "wires": [
+            [
+                "61a1c333c1dd07ed"
+            ]
+        ]
+    },
+    {
+        "id": "fb08fe184b21f073",
+        "type": "cloudantplus",
+        "host": "https://f1c0dcf9-5075-4061-a1f8-2f4ca596058a-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "PrimeiraCredencial",
+        "useapikey": true
+    }
+]
